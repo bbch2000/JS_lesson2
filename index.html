@@ -1,23 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Lesson2</title>
 </head>
+
 <body>
     <script>
-        
         //1.
-        var a = 1 , b = 1 , c, d;
-        c = ++a; console.log(c);// 2 (присваеиваем с увеличенное на 1 значениие а)
-        d = b++; console.log(d); // 1 (здесь он как-бы не успел увеличить b на 1, а сразу его присвоил)
-        c = (2+ ++a); console.log(c); // 5 (a мы увеличили на 1 в 10 строке, дальше мы к 2 прибавляем увеличенное значение а еще увеличенное на 1)
-        d = (2+ b++); console.log(d); // 4 (b мы увеличили на 1 на 11 строке, но здесь прибавляется не увеличенное на 1 значение b)
+        var a = 1
+            , b = 1
+            , c, d;
+        c = ++a;
+        console.log(c); // 2 (присваеиваем с увеличенное на 1 значениие а)
+        d = b++;
+        console.log(d); // 1 (здесь он как-бы не успел увеличить b на 1, а сразу его присвоил)
+        c = (2 + ++a);
+        console.log(c); // 5 (a мы увеличили на 1 в 10 строке, дальше мы к 2 прибавляем увеличенное значение а еще увеличенное на 1)
+        d = (2 + b++);
+        console.log(d); // 4 (b мы увеличили на 1 на 11 строке, но здесь прибавляется не увеличенное на 1 значение b)
         console.log(a); // 3 (a мы увеличили на 1 в 10 и 12 строках)
         console.log(b); // 3 (b мы увеличили на 1 в 11 и 13 строках)
         
-        2.
+        //2.
+        var a = 2;
+        var x = 1 + (a *= 2);
+        console.log(x); // 5 (мы к 1 прибавляем умноженное значение a на 2)
         
+        //3.
+        /*var a = prompt('vvedi a');
+        a = parseInt(a);
+        var b = prompt('vvedi b');
+        b = parseInt(b);
+        if ((a > 0) && (b > 0)) {
+            alert('положительные a - b = ' + (a - b))
+        } else if ((a < 0) && (b < 0)) {
+            alert('отрицательные a * b = ' + (a * b))
+        } else {
+            alert('разные a + b = ' + (a + b))
+        };*/
+        
+        //4.
+        // лень городить много кейсов, потому что это проще сделать через цикл, поэтому сделал от 0 до 5
+        /*var a = prompt('vvedi a от 0 до 5');
+        a = parseInt(a);
+        switch (a) {
+            case 0:
+                console.log('0,1,2,3,4,5');
+                break;
+            case 1:
+                console.log('1,2,3,4,5');
+                break;
+            case 2:
+                console.log('2,3,4,5');
+                break;
+            case 3:
+                console.log('3,4,5');
+                break;
+            case 4:
+                console.log('4,5');
+                break;
+            case 5:
+                console.log('5');
+                break;
+        };*/
+        
+        //5.
+        function sum(a,b){
+            return (a + b)
+        }
+        function raz(a,b){
+            return (a - b)
+        }
+        function proiz(a,b){
+            return (a * b)
+        }
+        function delen(a,b){
+            return (a / b)
+        }
+        
+        console.log(sum(1,2));
+        console.log(raz(1,2));
+        console.log(proiz(1,2));
+        console.log(delen(1,2));
+        
+        //6.
+        function mathOperation(arg1, arg2, operation){
+            switch (operation){
+                case 'sum':
+                    return sum(arg1,arg2);
+                    break;
+                case 'raz':
+                    return raz(arg1,arg2);
+                    break;
+                case 'proiz':
+                    return proiz(arg1,arg2);
+                    break;
+                case 'delen':
+                    return delen(arg1,arg2);
+                    break;
+                default: return ('error');
+                    break;
+            };
+        }
+        
+        console.log(mathOperation(1, 2, 'sum'));
+        console.log(mathOperation(1, 2, 'raz'));
+        console.log(mathOperation(1, 2, 'proiz'));
+        console.log(mathOperation(1, 2, 'delen'));
+        console.log(mathOperation(1, 2, 'su'));
+        
+        //7.
+        console.log(null>0);
+        console.log(null<0);
+        console.log(null==0); //отдельный тип и говорит о неизвестности чего-либо
+        
+        //8.
+        var current = 1;
+        function power(val, pow){
+            current = current * val;
+            if (pow > 1) {
+                power(val,pow-1);
+            }
+            return current;
+        }
+        console.log(power(2,10));
+        
+        //Угадай число от 1 до 10
+        var n = 0;
+        var number,gess;
+        function game(){
+            if (n == 0){
+                number = Math.round(Math.random()*10)+1;
+                console.log(number);
+                n++;
+                game();
+            } else {
+                gess = prompt('введи число от 1 до 10');
+                if (gess>number) {
+                    alert ('введенное число больше задуманного');
+                    n++;
+                    game();
+                } else if (gess<number){
+                    alert ('введенное число меньше задуманного');
+                    n++;
+                    game();
+                } else {
+                    alert ('ты угадал за ' + n + ' попыток')
+                }
+            }
+        }
+        
+        game();
     </script>
 </body>
+
 </html>
